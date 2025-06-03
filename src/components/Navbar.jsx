@@ -1,0 +1,201 @@
+// src/components/Navbar.js
+import React, { useState, useEffect } from 'react';
+import { Menu, X, Code, Zap } from 'lucide-react';
+
+const Navbar = () => {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
+  const [activeSection, setActiveSection] = useState('hero');
+  const [scrollProgress, setScrollProgress] = useState(0);
+  const [isVisible, setIsVisible] = useState(true);
+  const [lastScrollY, setLastScrollY] = useState(0);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollTop = window.scrollY;
+      const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+      const scrollPercent = (scrollTop / docHeight) * 100;
+      
+      setIsScrolled(scrollTop > 50);
+      setScrollProgress(scrollPercent);
+      
+      // Hide/Show navbar based on scroll direction
+      if (scrollTop > lastScrollY && scrollTop > 100) {
+        // Scrolling down & past 100px - hide navbar
+        setIsVisible(false);
+        setIsMenuOpen(false); // Close mobile menu when hiding
+      } else if (scrollTop < lastScrollY) {
+        // Scrolling up - show navbar
+        setIsVisible(true);
+      }
+      
+      // Always show at top of page
+      if (scrollTop < 50) {
+        setIsVisible(true);
+      }
+      
+      setLastScrollY(scrollTop);
+      
+      // Update active section based on scroll position
+      const sections = ['hero', 'about', 'skills', 'projects', 'contact'];
+      const scrollPosition = scrollTop + 100;
+
+      for (const section of sections) {
+        const element = document.getElementById(section);
+        if (element) {
+          const { offsetTop, offsetHeight } = element;
+          if (scrollPosition >= offsetTop && scrollPosition < offsetTop + offsetHeight) {
+            setActiveSection(section);
+            break;
+          }
+        }
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, [lastScrollY]);
+
+  const scrollToSection = (sectionId) => {
+    const element = document.getElementById(sectionId);
+    element?.scrollIntoView({ behavior: 'smooth' });
+    setIsMenuOpen(false);
+  };
+
+  const navItems = [
+    { name: 'Home', id: 'hero', icon: '🏠' },
+    { name: 'About', id: 'about', icon: '👨‍💻' },
+    { name: 'Skills', id: 'skills', icon: '⚡' },
+    { name: 'Projects', id: 'projects', icon: '🚀' },
+    { name: 'Contact', id: 'contact', icon: '📧' }
+  ];
+
+  return (
+    <nav className={`fixed top-0 w-full z-50 transition-all duration-500 ${
+      isVisible ? 'translate-y-0' : '-translate-y-full'
+    } ${
+      isScrolled 
+        ? 'bg-gray-950 border-b border-purple-500/20 shadow-lg shadow-purple-500/10' 
+        : 'bg-gray-950 border-b border-white/10'
+    }`}>
+      {/* Scroll Progress Bar */}
+      <div className="absolute bottom-0 left-0 h-0.5 bg-gradient-to-r from-purple-500 via-violet-500 to-fuchsia-500 transition-all duration-300"
+           style={{ width: `${scrollProgress}%` }}
+      />
+      
+      <div className="max-w-7xl mx-auto px-6">
+        <div className="flex justify-between items-center py-4">
+          {/* Enhanced Logo */}
+          <div 
+            onClick={() => scrollToSection('hero')}
+            className="cursor-pointer group"
+          >
+            <div className="flex items-center gap-3">
+              <div className="relative">
+                <div className="w-12 h-12 bg-gradient-to-r from-purple-500 to-violet-600 rounded-xl flex items-center justify-center group-hover:scale-110 transition-all duration-300 shadow-lg group-hover:shadow-purple-500/25">
+                  <span className="text-white font-bold text-lg">LA</span>
+                </div>
+                <div className="absolute -inset-1 bg-gradient-to-r from-purple-500 to-violet-600 rounded-xl opacity-0 group-hover:opacity-30 transition-opacity duration-300"></div>
+              </div>
+              <div className="text-xl font-bold">
+                <div className="bg-gradient-to-r from-white via-purple-200 to-purple-400 bg-clip-text text-transparent">
+                  Lakshya
+                </div>
+                <div className="text-purple-300 text-sm font-normal -mt-1">
+                  Full-Stack Developer
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          {/* Enhanced Desktop Menu */}
+          <div className="hidden lg:flex items-center px-2 py-2">
+            {navItems.map((item) => (
+              <button
+                key={item.id}
+                onClick={() => scrollToSection(item.id)}
+                className={`relative px-6 py-2 font-medium text-sm transition-all duration-300 group flex rounded-2xl items-center gap-2 ${
+                  activeSection === item.id
+                    ? 'text-white bg-gradient-to-r from-purple-500 to-violet-600 shadow-lg'
+                    : 'text-gray-300 hover:text-purple-300 hover:bg-gray-700'
+                }`}
+              >
+                <span className="text-xs">{item.icon}</span>
+                {item.name}
+                {activeSection === item.id && (
+                  <div className="absolute -bottom-4 left-1/2 transform -translate-x-1/2 w-1 h-1 bg-purple-400 rounded-full"></div>
+                )}
+              </button>
+            ))}
+          </div>
+
+          {/* Mobile Menu Button */}
+          <button
+            className="lg:hidden relative p-3 rounded-xl bg-gray-800 border border-white/10 hover:border-purple-400/30 transition-all duration-300 hover:scale-110"
+            onClick={() => setIsMenuOpen(!isMenuOpen)}
+          >
+            <div className="w-6 h-6 relative">
+              <div className={`absolute inset-0 transition-all duration-300 ${isMenuOpen ? 'rotate-180 opacity-0' : 'rotate-0 opacity-100'}`}>
+                <Menu size={24} className="text-gray-300" />
+              </div>
+              <div className={`absolute inset-0 transition-all duration-300 ${isMenuOpen ? 'rotate-0 opacity-100' : 'rotate-180 opacity-0'}`}>
+                <X size={24} className="text-gray-300" />
+              </div>
+            </div>
+          </button>
+        </div>
+
+        {/* Mobile Menu */}
+        <div className={`lg:hidden transition-all duration-500 ease-in-out overflow-hidden ${
+          isMenuOpen ? 'max-h-screen opacity-100' : 'max-h-0 opacity-0'
+        }`}>
+          <div className="py-6 border-t border-white/10 bg-gray-800 rounded-b-3xl">
+            {/* Mobile Navigation */}
+            <div className="space-y-2 mb-6">
+              {navItems.map((item) => (
+                <button
+                  key={item.id}
+                  onClick={() => scrollToSection(item.id)}
+                  className={`flex items-center w-full text-left px-6 py-4 rounded-xl font-medium transition-all duration-300 ${
+                    activeSection === item.id
+                      ? 'text-white bg-gradient-to-r from-purple-500 to-violet-600 border-l-4 border-purple-300 shadow-lg'
+                      : 'text-gray-300 hover:text-purple-300 hover:bg-gray-700'
+                  }`}
+                >
+                  <span className="text-lg mr-3">{item.icon}</span>
+                  <span className="flex-1">{item.name}</span>
+                  {activeSection === item.id && (
+                    <div className="w-2 h-2 bg-white rounded-full"></div>
+                  )}
+                </button>
+              ))}
+            </div>
+
+            {/* Quick Links */}
+            <div className="px-6">
+              <div className="text-gray-400 text-sm mb-3 px-2">Quick Actions</div>
+              <div className="grid grid-cols-2 gap-3">
+                <button 
+                  onClick={() => scrollToSection('projects')}
+                  className="flex items-center gap-2 p-3 bg-gray-700 rounded-lg hover:bg-gray-600 transition-colors"
+                >
+                  <Code size={16} className="text-purple-400" />
+                  <span className="text-sm text-gray-300">Projects</span>
+                </button>
+                <button 
+                  onClick={() => scrollToSection('skills')}
+                  className="flex items-center gap-2 p-3 bg-gray-700 rounded-lg hover:bg-gray-600 transition-colors"
+                >
+                  <Zap size={16} className="text-violet-400" />
+                  <span className="text-sm text-gray-300">Skills</span>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </nav>
+  );
+};
+
+export default Navbar;
