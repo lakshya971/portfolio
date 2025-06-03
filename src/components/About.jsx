@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Code, Palette, Database, Globe, Trophy, Heart, Calendar, MapPin, Coffee, Zap } from 'lucide-react';
 
 
+
 const About = () => {
   const [animateCards, setAnimateCards] = useState(false);
   const [activeTab, setActiveTab] = useState('overview');
