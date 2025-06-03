@@ -2,6 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import { ChevronDown, Download, ArrowRight, Github, Linkedin, Mail } from 'lucide-react';
 
+
 const Hero = () => {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const [isLoaded, setIsLoaded] = useState(false);
