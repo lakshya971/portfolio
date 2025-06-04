@@ -10,7 +10,7 @@ import './App.css';
 
 function App() {
   return (
-    <div className="App bg-gray-950 text-white min-h-screen">
+    <div className="App bg-black text-white min-h-screen">
       <Navbar />
       <Hero />
       <About />

@@ -70,16 +70,15 @@ const Navbar = () => {
     { name: 'Contact', id: 'contact', icon: '📧' }
   ];
 
-  return (
-    <nav className={`fixed top-0 w-full z-50 transition-all duration-500 ${
+  return (    <nav className={`fixed top-0 w-full z-50 transition-all duration-500 ${
       isVisible ? 'translate-y-0' : '-translate-y-full'
     } ${
       isScrolled 
-        ? 'bg-gray-950 border-b border-purple-500/20 shadow-lg shadow-purple-500/10' 
-        : 'bg-gray-950 border-b border-white/10'
+        ? 'bg-black border-b border-white/20 shadow-lg shadow-black/50' 
+        : 'bg-black border-b border-white/10'
     }`}>
       {/* Scroll Progress Bar */}
-      <div className="absolute bottom-0 left-0 h-0.5 bg-gradient-to-r from-purple-500 via-violet-500 to-fuchsia-500 transition-all duration-300"
+      <div className="absolute bottom-0 left-0 h-0.5 bg-white transition-all duration-300"
            style={{ width: `${scrollProgress}%` }}
       />
       
@@ -92,23 +91,19 @@ const Navbar = () => {
           >
             <div className="flex items-center gap-3">
               <div className="relative">
-                <div className="w-12 h-12 bg-gradient-to-r from-purple-500 to-violet-600 rounded-xl flex items-center justify-center group-hover:scale-110 transition-all duration-300 shadow-lg group-hover:shadow-purple-500/25">
-                  <span className="text-white font-bold text-lg">LA</span>
+                <div className="w-12 h-12 bg-white rounded-xl flex items-center justify-center group-hover:scale-110 transition-all duration-300 shadow-lg">
+                  <span className="text-black font-bold text-lg">LA</span>
                 </div>
-                <div className="absolute -inset-1 bg-gradient-to-r from-purple-500 to-violet-600 rounded-xl opacity-0 group-hover:opacity-30 transition-opacity duration-300"></div>
+                <div className="absolute -inset-1 bg-white rounded-xl opacity-0 group-hover:opacity-30 transition-opacity duration-300"></div>
               </div>
               <div className="text-xl font-bold">
-                <div className="bg-gradient-to-r from-white via-purple-200 to-purple-400 bg-clip-text text-transparent">
-                  Lakshya
-                </div>
-                <div className="text-purple-300 text-sm font-normal -mt-1">
-                  Full-Stack Developer
+                <div className="text-white tracking-wider text-4xl">
+                  LAKSHYA
                 </div>
               </div>
             </div>
           </div>
-          
-          {/* Enhanced Desktop Menu */}
+            {/* Enhanced Desktop Menu */}
           <div className="hidden lg:flex items-center px-2 py-2">
             {navItems.map((item) => (
               <button
@@ -116,14 +111,14 @@ const Navbar = () => {
                 onClick={() => scrollToSection(item.id)}
                 className={`relative px-6 py-2 font-medium text-sm transition-all duration-300 group flex rounded-2xl items-center gap-2 ${
                   activeSection === item.id
-                    ? 'text-white bg-gradient-to-r from-purple-500 to-violet-600 shadow-lg'
-                    : 'text-gray-300 hover:text-purple-300 hover:bg-gray-700'
+                    ? 'text-black bg-white shadow-lg'
+                    : 'text-gray-300 hover:text-white hover:bg-gray-800'
                 }`}
               >
                 <span className="text-xs">{item.icon}</span>
                 {item.name}
                 {activeSection === item.id && (
-                  <div className="absolute -bottom-4 left-1/2 transform -translate-x-1/2 w-1 h-1 bg-purple-400 rounded-full"></div>
+                  <div className="absolute -bottom-4 left-1/2 transform -translate-x-1/2 w-1 h-1 bg-white rounded-full"></div>
                 )}
               </button>
             ))}
@@ -131,7 +126,7 @@ const Navbar = () => {
 
           {/* Mobile Menu Button */}
           <button
-            className="lg:hidden relative p-3 rounded-xl bg-gray-800 border border-white/10 hover:border-purple-400/30 transition-all duration-300 hover:scale-110"
+            className="lg:hidden relative p-3 rounded-xl bg-gray-800 border border-white/10 hover:border-white/30 transition-all duration-300 hover:scale-110"
             onClick={() => setIsMenuOpen(!isMenuOpen)}
           >
             <div className="w-6 h-6 relative">

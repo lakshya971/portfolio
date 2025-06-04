@@ -91,23 +91,21 @@ const Contact = () => {
     linkedin: '< 12 hours'
   };
 
-  return (
-    <section id="contact" className="py-24 bg-gray-950 relative overflow-hidden">
+  return (    <section id="contact" className="py-24 bg-black relative overflow-hidden">
       {/* Background Elements */}
       <div className="absolute inset-0">
-        <div className="absolute top-0 left-1/4 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl"></div>
-        <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-violet-500/10 rounded-full blur-3xl"></div>
+        <div className="absolute top-0 left-1/4 w-96 h-96 bg-white/5 rounded-full blur-3xl"></div>
+        <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-gray-400/10 rounded-full blur-3xl"></div>
       </div>
 
       <div className="max-w-7xl mx-auto px-6 relative z-10">
-        {/* Header */}
-        <div className="text-center mb-20">
+        {/* Header */}        <div className="text-center mb-20">
           <div className="inline-block mb-4">
-            <span className="text-sm font-medium text-purple-400 bg-purple-500/10 px-4 py-2 rounded-full border border-purple-500/20">
+            <span className="text-sm font-medium text-gray-300 bg-white/10 px-4 py-2 rounded-full border border-white/20">
               Let's Connect
             </span>
           </div>
-          <h2 className="text-5xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-white via-purple-200 to-purple-400 bg-clip-text text-transparent">
+          <h2 className="text-5xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-white via-gray-300 to-gray-400 bg-clip-text text-transparent">
             Get In Touch
           </h2>
           <p className="text-gray-400 text-xl leading-relaxed max-w-3xl mx-auto">
@@ -122,18 +120,17 @@ const Contact = () => {
             {/* Quick Stats */}
             <div className="bg-white/5 backdrop-blur-sm rounded-2xl p-6 border border-white/10">
               <h3 className="text-xl font-bold text-white mb-4">Response Time</h3>
-              <div className="space-y-3">
-                <div className="flex justify-between items-center">
+              <div className="space-y-3">                <div className="flex justify-between items-center">
                   <span className="text-gray-400">Email</span>
-                  <span className="text-purple-300 font-medium">{responseTime.email}</span>
+                  <span className="text-gray-300 font-medium">{responseTime.email}</span>
                 </div>
                 <div className="flex justify-between items-center">
                   <span className="text-gray-400">Phone</span>
-                  <span className="text-purple-300 font-medium">{responseTime.phone}</span>
+                  <span className="text-gray-300 font-medium">{responseTime.phone}</span>
                 </div>
                 <div className="flex justify-between items-center">
                   <span className="text-gray-400">LinkedIn</span>
-                  <span className="text-purple-300 font-medium">{responseTime.linkedin}</span>
+                  <span className="text-gray-300 font-medium">{responseTime.linkedin}</span>
                 </div>
               </div>
             </div>
@@ -144,18 +141,16 @@ const Contact = () => {
                 const Icon = contact.icon;
                 return (
                   <div
-                    key={index}
-                    className={`group bg-white/5 backdrop-blur-sm rounded-2xl p-4 border border-white/10 hover:border-purple-400/30 transition-all duration-300 hover:bg-white/10 ${
+                    key={index}                    className={`group bg-white/5 backdrop-blur-sm rounded-2xl p-4 border border-white/10 hover:border-white/30 transition-all duration-300 hover:bg-white/10 ${
                       animateCards ? 'animate-fade-in-up' : 'opacity-0'
                     }`}
                     style={{ animationDelay: `${index * 100}ms` }}
                   >
-                    <div className="flex items-center gap-4">
-                      <div className="w-12 h-12 bg-gradient-to-r from-purple-500 to-violet-600 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-                        <Icon className="text-white" size={20} />
+                    <div className="flex items-center gap-4">                      <div className="w-12 h-12 bg-white rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                        <Icon className="text-black" size={20} />
                       </div>
                       <div className="flex-1">
-                        <h3 className="font-semibold text-white group-hover:text-purple-300 transition-colors">
+                        <h3 className="font-semibold text-white group-hover:text-gray-300 transition-colors">
                           {contact.title}
                         </h3>
                         <p className="text-gray-400 text-sm mb-1">{contact.description}</p>
@@ -163,7 +158,7 @@ const Contact = () => {
                           href={contact.link}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="text-purple-300 hover:text-purple-200 transition-colors text-sm"
+                          className="text-gray-300 hover:text-gray-200 transition-colors text-sm"
                         >
                           {contact.info}
                         </a>
@@ -191,26 +186,24 @@ const Contact = () => {
                   <div>
                     <label className="block text-sm font-medium text-gray-300 mb-2">
                       Full Name *
-                    </label>
-                    <input
+                    </label>                    <input
                       type="text"
                       required
                       value={formData.name}
                       onChange={(e) => setFormData({...formData, name: e.target.value})}
-                      className="w-full px-4 py-3 bg-white/5 border border-white/20 rounded-xl focus:border-purple-400 focus:outline-none transition-all duration-300 text-white placeholder-gray-400 backdrop-blur-sm"
+                      className="w-full px-4 py-3 bg-white/5 border border-white/20 rounded-xl focus:border-white/40 focus:outline-none transition-all duration-300 text-white placeholder-gray-400 backdrop-blur-sm"
                       placeholder="Enter your full name"
                     />
                   </div>
                   <div>
                     <label className="block text-sm font-medium text-gray-300 mb-2">
                       Email Address *
-                    </label>
-                    <input
+                    </label>                    <input
                       type="email"
                       required
                       value={formData.email}
                       onChange={(e) => setFormData({...formData, email: e.target.value})}
-                      className="w-full px-4 py-3 bg-white/5 border border-white/20 rounded-xl focus:border-purple-400 focus:outline-none transition-all duration-300 text-white placeholder-gray-400 backdrop-blur-sm"
+                      className="w-full px-4 py-3 bg-white/5 border border-white/20 rounded-xl focus:border-white/40 focus:outline-none transition-all duration-300 text-white placeholder-gray-400 backdrop-blur-sm"
                       placeholder="Enter your email"
                     />
                   </div>
@@ -220,12 +213,11 @@ const Contact = () => {
                 <div>
                   <label className="block text-sm font-medium text-gray-300 mb-2">
                     Subject
-                  </label>
-                  <input
+                  </label>                  <input
                     type="text"
                     value={formData.subject}
                     onChange={(e) => setFormData({...formData, subject: e.target.value})}
-                    className="w-full px-4 py-3 bg-white/5 border border-white/20 rounded-xl focus:border-purple-400 focus:outline-none transition-all duration-300 text-white placeholder-gray-400 backdrop-blur-sm"
+                    className="w-full px-4 py-3 bg-white/5 border border-white/20 rounded-xl focus:border-white/40 focus:outline-none transition-all duration-300 text-white placeholder-gray-400 backdrop-blur-sm"
                     placeholder="What's this about?"
                   />
                 </div>
@@ -234,13 +226,12 @@ const Contact = () => {
                 <div>
                   <label className="block text-sm font-medium text-gray-300 mb-2">
                     Message *
-                  </label>
-                  <textarea
+                  </label>                  <textarea
                     required
                     rows={5}
                     value={formData.message}
                     onChange={(e) => setFormData({...formData, message: e.target.value})}
-                    className="w-full px-4 py-3 bg-white/5 border border-white/20 rounded-xl focus:border-purple-400 focus:outline-none transition-all duration-300 text-white placeholder-gray-400 resize-none backdrop-blur-sm"
+                    className="w-full px-4 py-3 bg-white/5 border border-white/20 rounded-xl focus:border-white/40 focus:outline-none transition-all duration-300 text-white placeholder-gray-400 resize-none backdrop-blur-sm"
                     placeholder="Tell me about your project or question..."
                   />
                 </div>
@@ -248,11 +239,10 @@ const Contact = () => {
                 {/* Submit Button */}
                 <button
                   type="submit"
-                  disabled={isSubmitting || submitSuccess}
-                  className={`group relative w-full px-8 py-4 rounded-xl font-semibold text-lg transition-all duration-300 overflow-hidden ${
+                  disabled={isSubmitting || submitSuccess}                  className={`group relative w-full px-8 py-4 rounded-xl font-semibold text-lg transition-all duration-300 overflow-hidden ${
                     submitSuccess
                       ? 'bg-green-500 text-white'
-                      : 'bg-gradient-to-r from-purple-500 to-violet-600 text-white hover:scale-105 shadow-lg hover:shadow-purple-500/25'
+                      : 'bg-white text-black hover:scale-105 hover:bg-gray-200 shadow-lg hover:shadow-white/25'
                   }`}
                 >
                   {!submitSuccess && (
@@ -285,15 +275,13 @@ const Contact = () => {
               </form>
             </div>
           </div>
-        </div>
-
-        {/* CTA Section */}
+        </div>        {/* CTA Section */}
         <div className="relative">
-          <div className="absolute inset-0 bg-gradient-to-r from-purple-500/10 via-violet-500/10 to-fuchsia-500/10 rounded-3xl blur-xl"></div>
+          <div className="absolute inset-0 bg-gradient-to-r from-white/5 via-gray-300/5 to-gray-400/5 rounded-3xl blur-xl"></div>
           
           <div className="relative bg-white/5 backdrop-blur-sm rounded-3xl p-8 md:p-12 border border-white/10 text-center">
             <div className="mb-6">
-              <h3 className="text-3xl md:text-4xl font-bold mb-4 bg-gradient-to-r from-white via-purple-200 to-purple-400 bg-clip-text text-transparent">
+              <h3 className="text-3xl md:text-4xl font-bold mb-4 bg-gradient-to-r from-white via-gray-200 to-gray-300 bg-clip-text text-transparent">
                 Ready to Start Your Project?
               </h3>
               <p className="text-gray-400 text-lg leading-relaxed max-w-2xl mx-auto">
@@ -305,9 +293,8 @@ const Contact = () => {
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-8">
               <button
                 onClick={() => window.open('mailto:lakshya@example.com?subject=Project Discussion', '_blank')}
-                className="group relative px-8 py-4 bg-gradient-to-r from-purple-500 to-violet-600 text-white rounded-xl font-semibold text-lg transition-all duration-300 hover:scale-105 overflow-hidden"
+                className="group relative px-8 py-4 bg-white text-black rounded-xl font-semibold text-lg transition-all duration-300 hover:scale-105 overflow-hidden hover:bg-gray-200"
               >
-                <div className="absolute inset-0 bg-gradient-to-r from-violet-600 to-purple-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                 <span className="relative flex items-center gap-3">
                   <MessageCircle size={20} />
                   Schedule a Call
@@ -316,7 +303,7 @@ const Contact = () => {
 
               <button 
                 onClick={() => window.open('/resume.pdf', '_blank')}
-                className="px-8 py-4 border border-purple-400/30 text-purple-300 rounded-xl font-semibold text-lg transition-all duration-300 hover:scale-105 hover:bg-purple-500/10 backdrop-blur-sm"
+                className="px-8 py-4 border border-white/30 text-gray-300 rounded-xl font-semibold text-lg transition-all duration-300 hover:scale-105 hover:bg-white/10 backdrop-blur-sm hover:text-white"
               >
                 View Resume
               </button>
@@ -325,15 +312,15 @@ const Contact = () => {
             {/* Trust Indicators */}
             <div className="flex justify-center items-center gap-8 text-sm text-gray-400">
               <div className="flex items-center gap-2">
-                <Star className="w-4 h-4 text-yellow-400" />
+                <Star className="w-4 h-4 text-gray-300" />
                 100% Client Satisfaction
               </div>
               <div className="flex items-center gap-2">
-                <CheckCircle className="w-4 h-4 text-green-400" />
+                <CheckCircle className="w-4 h-4 text-gray-300" />
                 50+ Projects Delivered
               </div>
               <div className="flex items-center gap-2">
-                <Clock className="w-4 h-4 text-purple-400" />
+                <Clock className="w-4 h-4 text-gray-300" />
                 Fast Response Time
               </div>
             </div>
