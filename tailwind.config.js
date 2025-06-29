@@ -6,6 +6,10 @@ export default {
   ],
   theme: {
     extend: {
+      fontFamily: {
+        'mono': ['Roboto Mono', 'monospace'],
+        'roboto': ['Roboto Mono', 'monospace'],
+      },
       colors: {
         'accent': '#8b5cf6', // purple-500 as primary accent
         'secondary': '#a855f7', // purple-400 as secondary

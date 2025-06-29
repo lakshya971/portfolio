@@ -86,8 +86,8 @@ const Navbar = () => {
               </div>
               <div className="absolute -inset-1 bg-white rounded-xl opacity-0 group-hover:opacity-30 transition-opacity duration-300 font-mono font-roboto"></div>
             </div>
-            <div className="text-xl font-bold font-mono font-roboto">
-              <div className="text-white tracking-wider text-4xl font-mono font-roboto">
+            <div className="font-mono">
+              <div className="text-white tracking-wider text-4xl font-mono font-bold">
                 LAKSHYA
               </div>
             </div>
