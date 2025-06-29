@@ -44,39 +44,36 @@ const Footer = () => {
     element?.scrollIntoView({ behavior: 'smooth' });
   };
 
-  return (    <footer className="relative bg-black border-t border-white/10 overflow-hidden">
-      {/* Background Elements */}
-      <div className="absolute inset-0">
-        <div className="absolute bottom-0 left-1/4 w-96 h-96 bg-white/5 rounded-full blur-3xl"></div>
-        <div className="absolute top-0 right-1/4 w-96 h-96 bg-gray-400/10 rounded-full blur-3xl"></div>
-      </div>
-
-      <div className="relative z-10">
+  return (
+    <footer className="bg-black text-gray-400 py-8 font-mono font-roboto">
+      {/* Plain black background, no dots or overlays */}
+      <div className="max-w-7xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between">
         {/* Main Footer Content */}
-        <div className="max-w-7xl mx-auto px-6 py-16">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
+        <div className="w-full mb-8 md:mb-0">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 font-mono font-roboto">
             {/* Brand Section */}
-            <div className="lg:col-span-2">              <div className="mb-6">
-                <h3 className="text-3xl font-bold bg-gradient-to-r from-white via-gray-200 to-gray-300 bg-clip-text text-transparent mb-4">
+            <div className="lg:col-span-2 font-mono font-roboto">
+              <div className="mb-6 font-mono font-roboto">
+                <h3 className="text-3xl font-bold bg-gradient-to-r from-white via-gray-200 to-gray-300 bg-clip-text text-transparent mb-4 font-mono font-roboto">
                   Lakshya Asthana
                 </h3>
-                <p className="text-gray-400 text-lg leading-relaxed max-w-md">
+                <p className="text-gray-400 text-lg leading-relaxed max-w-md font-mono font-roboto">
                   Full-Stack Developer passionate about creating exceptional digital experiences
                   with modern technologies and clean, scalable code.
                 </p>
               </div>
 
               {/* Contact Info */}
-              <div className="space-y-3 mb-8">
-                <div className="flex items-center gap-3 text-gray-400">
+              <div className="space-y-3 mb-8 font-mono font-roboto">
+                <div className="flex items-center gap-3 text-gray-400 font-mono font-roboto">
                   <MapPin size={16} className="text-gray-300" />
                   <span>Lucknow, India</span>
                 </div>
-                <div className="flex items-center gap-3 text-gray-400">
+                <div className="flex items-center gap-3 text-gray-400 font-mono font-roboto">
                   <Phone size={16} className="text-gray-300" />
                   <span>+91 700-799-2086</span>
                 </div>
-                <div className="flex items-center gap-3 text-gray-400">
+                <div className="flex items-center gap-3 text-gray-400 font-mono font-roboto">
                   <Mail size={16} className="text-gray-300" />
                   <span>asthanalakshya2005@gmail.com</span>
                 </div>
@@ -85,12 +82,13 @@ const Footer = () => {
 
             {/* Quick Links */}
             <div>
-              <h4 className="text-white font-semibold mb-6 text-lg">Quick Links</h4>
-              <div className="space-y-3">
-                {quickLinks.map((link, index) => (                  <button
+              <h4 className="text-white font-semibold mb-6 text-lg font-mono font-roboto">Quick Links</h4>
+              <div className="space-y-3 font-mono font-roboto">
+                {quickLinks.map((link, index) => (
+                  <button
                     key={index}
                     onClick={() => scrollToSection(link.href)}
-                    className="block text-gray-400 hover:text-gray-200 transition-colors duration-300 text-left"
+                    className="block text-gray-400 hover:text-gray-200 transition-colors duration-300 text-left font-mono font-roboto"
                   >
                     {link.name}
                   </button>
@@ -99,7 +97,7 @@ const Footer = () => {
                   href="/resume.pdf"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="block text-gray-400 hover:text-gray-200 transition-colors duration-300"
+                  className="block text-gray-400 hover:text-gray-200 transition-colors duration-300 font-mono font-roboto"
                 >
                   Resume
                 </a>
@@ -107,15 +105,16 @@ const Footer = () => {
             </div>
 
             {/* Skills & Technologies */}
-            <div>              <h4 className="text-white font-semibold mb-6 text-lg flex items-center gap-2">
+            <div>
+              <h4 className="text-white font-semibold mb-6 text-lg flex items-center gap-2 font-mono font-roboto">
                 <Code className="w-5 h-5 text-gray-300" />
                 Technologies
               </h4>
-              <div className="flex flex-wrap gap-2">
+              <div className="flex flex-wrap gap-2 font-mono font-roboto">
                 {skills.map((skill, index) => (
                   <span
                     key={index}
-                    className="px-3 py-1 bg-white/5 text-gray-300 rounded-full text-sm border border-white/20 hover:bg-white/10 transition-colors"
+                    className="px-3 py-1 bg-white/5 text-gray-300 rounded-full text-sm border border-white/20 hover:bg-white/10 transition-colors font-mono font-roboto"
                   >
                     {skill}
                   </span>
@@ -123,12 +122,12 @@ const Footer = () => {
               </div>
 
               {/* Availability Status */}
-              <div className="mt-8 bg-white/5 backdrop-blur-sm rounded-xl p-4 border border-white/10">
-                <div className="flex items-center gap-3 mb-2">
+              <div className="mt-8 bg-white/5 backdrop-blur-sm rounded-xl p-4 border border-white/10 font-mono font-roboto">
+                <div className="flex items-center gap-3 mb-2 font-mono font-roboto">
                   <div className="w-3 h-3 bg-green-400 rounded-full animate-pulse"></div>
-                  <span className="text-white font-medium">Available for Work</span>
+                  <span className="text-white font-medium font-mono font-roboto">Available for Work</span>
                 </div>
-                <p className="text-gray-400 text-sm">
+                <p className="text-gray-400 text-sm font-mono font-roboto">
                   Open to new opportunities and exciting projects.
                 </p>
               </div>
@@ -137,23 +136,24 @@ const Footer = () => {
         </div>
 
         {/* Bottom Bar */}
-        <div className="border-t border-white/10">
-          <div className="max-w-7xl mx-auto px-6 py-6">
-            <div className="flex flex-col md:flex-row justify-between items-center gap-4">
-              <div className="flex items-center gap-2 text-gray-400 text-sm">
+        <div className="border-t border-white/10 font-mono font-roboto">
+          <div className="max-w-7xl mx-auto px-6 py-6 font-mono font-roboto">
+            <div className="flex flex-col md:flex-row justify-between items-center gap-4 font-mono font-roboto">
+              <div className="flex items-center gap-2 text-gray-400 text-sm font-mono font-roboto">
                 <span>© 2025 Lakshya Asthana. Made with</span>
                 <Heart size={16} className="text-red-400 animate-pulse" />
                 <span>in Lucknow</span>
               </div>
 
-              <div className="flex items-center gap-6">
-                <span className="text-gray-400 text-sm">
+              <div className="flex items-center gap-6 font-mono font-roboto">
+                <span className="text-gray-400 text-sm font-mono font-roboto">
                   Built with React & TailwindCSS
                 </span>
 
-                {/* Scroll to Top Button */}                <button
+                {/* Scroll to Top Button */}
+                <button
                   onClick={scrollToTop}
-                  className="group p-2 bg-white/5 backdrop-blur-sm rounded-full border border-white/10 hover:border-white/30 transition-all duration-300 hover:scale-110"
+                  className="group p-2 bg-white/5 backdrop-blur-sm rounded-full border border-white/10 hover:border-white/30 transition-all duration-300 hover:scale-110 font-mono font-roboto"
                   aria-label="Scroll to top"
                 >
                   <ArrowUp size={16} className="text-gray-400 group-hover:text-gray-200 transition-colors" />

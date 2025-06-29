@@ -1,7 +1,18 @@
-@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Oswald&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
-@import 'tailwindcss';
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Oswald&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family:Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+@import "tailwindcss";
 
-/* Custom animations for skills section */
+/* Smooth scroll behavior */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Selection styling */
+::selection {
+  background-color: rgba(17, 62, 209, 0.5);
+  color: yellow;
+}
+
+/* Custom animations */
 @keyframes fadeInUp {
   from {
     opacity: 0;
@@ -11,11 +22,6 @@
     opacity: 1;
     transform: translateY(0);
   }
-}
-
-::selection{
-  background-color: rgba(17, 62, 209, 0.5);
-  color: yellow;
 }
 
 @keyframes slideInLeft {
@@ -29,27 +35,6 @@
   }
 }
 
-@keyframes glow {
-  0%, 100% {
-    box-shadow: 0 0 5px rgba(6, 182, 212, 0.5);
-  }
-  50% {
-    box-shadow: 0 0 20px rgba(6, 182, 212, 0.8);
-  }
-}
-
-/* Projects animations */
-@keyframes fadeInScale {
-  from {
-    opacity: 0;
-    transform: translateY(30px) scale(0.9);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0) scale(1);
-  }
-}
-
 @keyframes slideInRight {
   from {
     opacity: 0;
@@ -58,6 +43,17 @@
   to {
     opacity: 1;
     transform: translateX(0);
+  }
+}
+
+@keyframes fadeInScale {
+  from {
+    opacity: 0;
+    transform: translateY(30px) scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
   }
 }
 
@@ -79,6 +75,63 @@
   }
 }
 
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-10px) rotate(180deg);
+  }
+}
+
+@keyframes glow {
+  0%, 100% {
+    box-shadow: 0 0 5px rgba(6, 182, 212, 0.5);
+  }
+  50% {
+    box-shadow: 0 0 20px rgba(6, 182, 212, 0.8);
+  }
+}
+
+@keyframes subtleGlow {
+  0%, 100% {
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
+  }
+  50% {
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+  }
+}
+
+@keyframes torchGlow {
+  0%, 100% {
+    opacity: 0.5;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.1);
+  }
+}
+
+@keyframes blink {
+  0%, 50% { 
+    opacity: 1; 
+  }
+  51%, 100% { 
+    opacity: 0; 
+  }
+}
+
+/* Animation utility classes */
 .animate-fade-in-up {
   animation: fadeInUp 0.6s ease-out;
 }
@@ -103,34 +156,6 @@
   animation: glow 2s ease-in-out infinite;
 }
 
-/* Hero section custom animations */
-@keyframes shimmer {
-  0% {
-    background-position: -200% 0;
-  }
-  100% {
-    background-position: 200% 0;
-  }
-}
-
-@keyframes float {
-  0%, 100% {
-    transform: translateY(0px) rotate(0deg);
-  }
-  50% {
-    transform: translateY(-10px) rotate(180deg);
-  }
-}
-
-@keyframes subtleGlow {
-  0%, 100% {
-    box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
-  }
-  50% {
-    box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
-  }
-}
-
 .animate-shimmer {
   background-size: 200% 100%;
   animation: shimmer 3s ease-in-out infinite;
@@ -144,18 +169,11 @@
   animation: subtleGlow 2s ease-in-out infinite;
 }
 
-/* Enhanced torch effects for skills section */
-@keyframes torchGlow {
-  0%, 100% {
-    opacity: 0.5;
-    transform: scale(1);
-  }
-  50% {
-    opacity: 1;
-    transform: scale(1.1);
-  }
+.animate-blink {
+  animation: blink 1s infinite;
 }
 
+/* Enhanced torch effects for skills section */
 .torch-glow {
   animation: torchGlow 2s ease-in-out infinite;
 }
@@ -176,11 +194,6 @@
     0 20px 40px rgba(255, 255, 255, 0.1),
     0 0 60px rgba(255, 255, 255, 0.05),
     inset 0 1px 0 rgba(255, 255, 255, 0.2);
-}
-
-/* Smooth scroll behavior */
-html {
-  scroll-behavior: smooth;
 }
 
 /* Utility classes for text truncation */
@@ -208,80 +221,6 @@ html {
   line-clamp: 3;
 }
 
-/* Add this to your index.css or App.css */
-@keyframes blink {
-  0%, 50% { opacity: 1; }
-  51%, 100% { opacity: 0; }
-}
-
-.animate-blink {
-  animation: blink 1s infinite;
-}
-
-/* Add these to your index.css file */
-
-/* Enhanced animations */
-@keyframes fade-in-up {
-  0% {
-    opacity: 0;
-    transform: translateY(30px) scale(0.95);
-  }
-  100% {
-    opacity: 1;
-    transform: translateY(0) scale(1);
-  }
-}
-
-@keyframes float-enhanced {
-  0%, 100% {
-    transform: translateY(0px) rotate(0deg);
-  }
-  50% {
-    transform: translateY(-10px) rotate(2deg);
-  }
-}
-
-@keyframes pulse-glow {
-  0%, 100% {
-    box-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
-  }
-  50% {
-    box-shadow: 0 0 40px rgba(255, 255, 255, 0.2);
-  }
-}
-
-@keyframes shimmer-enhanced {
-  0% {
-    background-position: -200% 0;
-  }
-  100% {
-    background-position: 200% 0;
-  }
-}
-
-.animate-fade-in-up {
-  animation: fade-in-up 0.8s ease-out forwards;
-}
-
-.animate-float-enhanced {
-  animation: float-enhanced 6s ease-in-out infinite;
-}
-
-.animate-pulse-glow {
-  animation: pulse-glow 2s ease-in-out infinite;
-}
-
-.animate-shimmer-enhanced {
-  background: linear-gradient(45deg, transparent 30%, rgba(255,255,255,0.1) 50%, transparent 70%);
-  background-size: 200% 200%;
-  animation: shimmer-enhanced 3s ease-in-out infinite;
-}
-
-/* Smooth transitions for all interactive elements */
-* {
-  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
 /* Enhanced hover states */
 .group:hover .group-hover\:glow {
   filter: drop-shadow(0 0 20px rgba(255, 255, 255, 0.3));
@@ -297,77 +236,7 @@ html {
   transform: rotateX(5deg) rotateY(5deg) scale(1.02);
 }
 
-/* Enhanced skill card animations */
-@keyframes fade-in-up {
-  0% {
-    opacity: 0;
-    transform: translateY(40px) scale(0.9);
-  }
-  100% {
-    opacity: 1;
-    transform: translateY(0) scale(1);
-  }
-}
-
-@keyframes shimmer {
-  0% {
-    transform: translateX(-100%);
-  }
-  100% {
-    transform: translateX(100%);
-  }
-}
-
-@keyframes float {
-  0%, 100% {
-    transform: translateY(0px) rotate(0deg);
-  }
-  33% {
-    transform: translateY(-10px) rotate(120deg);
-  }
-  66% {
-    transform: translateY(5px) rotate(240deg);
-  }
-}
-
-@keyframes pulse-glow {
-  0%, 100% {
-    box-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
-  }
-  50% {
-    box-shadow: 0 0 40px rgba(255, 255, 255, 0.3);
-  }
-}
-
-@keyframes torch-glow {
-  0%, 100% {
-    opacity: 0.5;
-    transform: scale(1);
-  }
-  50% {
-    opacity: 0.8;
-    transform: scale(1.1);
-  }
-}
-
-/* Enhanced utility classes */
-.animate-shimmer {
-  animation: shimmer 2s infinite;
-}
-
-.animate-float {
-  animation: float 6s ease-in-out infinite;
-}
-
-.animate-pulse-glow {
-  animation: pulse-glow 2s ease-in-out infinite;
-}
-
-.animate-torch-glow {
-  animation: torch-glow 3s ease-in-out infinite;
-}
-
-/* Enhanced hover effects */
+/* Enhanced skill card hover effects */
 .skill-card-hover {
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
@@ -396,13 +265,6 @@ html {
   animation: shimmer 2s infinite;
 }
 
-/* Enhanced responsive design */
-@media (max-width: 768px) {
-  .skill-card-hover:hover {
-    transform: translateY(-8px) scale(1.02);
-  }
-}
-
 /* Torch effect enhancements */
 .torch-spotlight {
   pointer-events: none;
@@ -427,4 +289,11 @@ html {
   pointer-events: none;
   animation: float var(--duration, 3s) ease-in-out infinite;
   animation-delay: var(--delay, 0s);
+}
+
+/* Enhanced responsive design */
+@media (max-width: 768px) {
+  .skill-card-hover:hover {
+    transform: translateY(-8px) scale(1.02);
+  }
 }

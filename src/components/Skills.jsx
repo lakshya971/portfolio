@@ -430,98 +430,39 @@ const Skills = () => {
   }, []);
 
   return (
-    <section ref={sectionRef} id="skills" className="py-24 bg-black relative overflow-hidden">
-      {/* Enhanced Background Elements */}
-      <div className="absolute inset-0">
-        {/* Animated particles */}
-        {particles.map(particle => (
-          <div
-            key={particle.id}
-            className="absolute bg-white rounded-full pointer-events-none"
-            style={{
-              left: `${particle.x}%`,
-              top: `${particle.y}%`,
-              width: `${particle.size}px`,
-              height: `${particle.size}px`,
-              opacity: particle.opacity,
-              animation: `float ${3 + particle.size}s ease-in-out infinite`,
-              animationDelay: `${particle.id * 0.1}s`
-            }}
-          />
-        ))}
-
-        {/* Enhanced background orbs */}
-        <div 
-          className="absolute w-96 h-96 bg-white/8 rounded-full blur-3xl transition-all duration-1000"
-          style={{
-            top: '10%',
-            left: `${20 + mousePosition.x * 0.15}%`,
-            transform: `scale(${1 + scrollProgress * 0.3})`,
-          }}
-        />
-        <div 
-          className="absolute w-96 h-96 bg-gray-400/12 rounded-full blur-3xl transition-all duration-1000"
-          style={{
-            bottom: '10%',
-            right: `${20 + mousePosition.y * 0.15}%`,
-            transform: `scale(${1 + scrollProgress * 0.2})`,
-          }}
-        />        {/* Torch effect spotlight */}
-        {isMouseInSection && (
-          <div
-            className="absolute pointer-events-none z-20 transition-opacity duration-300"
-            style={{
-              left: torchPosition.x - 150,
-              top: torchPosition.y - 150,
-              width: '300px',
-              height: '300px',
-              background: 'radial-gradient(circle, rgba(255,255,255,0.08) 0%, rgba(255,255,255,0.03) 30%, transparent 70%)',
-              borderRadius: '50%',
-              transition: 'all 0.2s ease-out',
-              filter: 'blur(15px)',
-              opacity: hoveredSkill ? 0.5 : 1,
-            }}
-          />
-        )}
-
-        {/* Grid pattern */}
-        <div className="absolute inset-0 opacity-[0.02]" style={{
-          backgroundImage: `radial-gradient(circle at 1px 1px, white 1px, transparent 0)`,
-          backgroundSize: '40px 40px',
-        }} />
-      </div>
-
-      <div className="max-w-7xl mx-auto px-6 relative z-10">
+    <section ref={sectionRef} id="skills" className="py-12 bg-black relative overflow-hidden font-mono font-roboto">
+      {/* Plain black background, no dots or particles */}
+      <div className="max-w-7xl mx-auto px-6 relative z-10 font-mono font-roboto">
         {/* Enhanced Header */}
-        <div className="text-center mb-20">
-          <div className="inline-block mb-4">
-            <span className="text-sm font-medium text-gray-300 bg-white/10 px-6 py-3 rounded-full border border-white/20 backdrop-blur-sm">
+        <div className="text-center mb-20 font-mono font-roboto">
+          <div className="inline-block mb-4 font-mono font-roboto">
+            <span className="text-sm font-medium text-gray-300 bg-white/10 px-6 py-3 rounded-full border border-white/20 backdrop-blur-sm font-mono font-roboto">
               ⚡ Technical Expertise
             </span>
           </div>
-          <h2 className="text-5xl md:text-7xl font-bold mb-6 bg-gradient-to-r from-white via-gray-200 to-gray-400 bg-clip-text text-transparent">
+          <h2 className="text-5xl md:text-7xl font-bold mb-6 bg-gradient-to-r from-white via-gray-200 to-gray-400 bg-clip-text text-transparent font-mono font-roboto">
             Skills & Technologies
           </h2>
-          <p className="text-gray-400 text-xl leading-relaxed max-w-4xl mx-auto mb-8">
+          <p className="text-gray-400 text-xl leading-relaxed max-w-4xl mx-auto mb-8 font-mono font-roboto">
             Mastering cutting-edge technologies to build exceptional digital experiences that solve real-world problems
           </p>
 
           {/* Enhanced Stats */}
-          <div className="grid grid-cols-2 md:grid-cols-6 gap-6 max-w-4xl mx-auto">
+          <div className="grid grid-cols-2 md:grid-cols-6 gap-6 max-w-4xl mx-auto font-mono font-roboto">
             {Object.entries(skillStats).map(([key, value], index) => (
               <div 
                 key={key}
-                className={`text-center group cursor-pointer transition-all duration-500 ${
+                className={`text-center group cursor-pointer transition-all duration-500 font-mono font-roboto ${
                   visibleStats.includes(index) ? 'animate-fade-in-up' : 'opacity-0'
                 }`}
                 style={{ animationDelay: `${index * 100}ms` }}
               >
-                <div className="text-2xl md:text-3xl font-bold text-white group-hover:text-gray-300 transition-colors">
+                <div className="text-2xl md:text-3xl font-bold text-white group-hover:text-gray-300 transition-colors font-mono font-roboto">
                   {typeof value === 'number' ? value : value}
                   {key === 'averageLevel' && '%'}
                   {key === 'totalExperience' && ' Years'}
                 </div>
-                <div className="text-xs md:text-sm text-gray-400 group-hover:text-gray-300 transition-colors capitalize">
+                <div className="text-xs md:text-sm text-gray-400 group-hover:text-gray-300 transition-colors capitalize font-mono font-roboto">
                   {key.replace(/([A-Z])/g, ' $1').trim()}
                 </div>
               </div>
@@ -530,26 +471,26 @@ const Skills = () => {
         </div>
 
         {/* Enhanced Category Filter */}
-        <div className="flex flex-wrap justify-center gap-3 mb-16">
+        <div className="flex flex-wrap justify-center gap-3 mb-16 font-mono font-roboto">
           {skillCategories.map((category, index) => (
             <button
               key={category.id}
               onClick={() => setActiveCategory(category.id)}
-              className={`group flex items-center gap-2 px-6 py-4 rounded-2xl text-sm font-medium transition-all duration-300 backdrop-blur-sm relative overflow-hidden ${
+              className={`group flex items-center gap-2 px-6 py-4 rounded-2xl text-sm font-medium transition-all duration-300 backdrop-blur-sm relative overflow-hidden font-mono font-roboto ${
                 activeCategory === category.id
                   ? 'bg-white/20 text-white border border-white/30 shadow-lg shadow-white/20 scale-105'
                   : 'bg-white/5 text-gray-400 hover:bg-white/10 hover:text-gray-300 border border-white/10 hover:border-white/30 hover:scale-105'
               }`}
             >
-              <div className={`transition-transform duration-300 ${activeCategory === category.id ? 'scale-110' : 'group-hover:scale-110'}`}>
+              <div className={`transition-transform duration-300 font-mono font-roboto ${activeCategory === category.id ? 'scale-110' : 'group-hover:scale-110'}`}>
                 {category.icon}
               </div>
               <span>{category.name}</span>
-              <span className={`ml-2 px-2 py-1 rounded-full text-xs ${
+              <span className="ml-2 px-2 py-1 rounded-full text-xs font-mono font-roboto ${
                 activeCategory === category.id 
                   ? 'bg-white/20 text-white' 
                   : 'bg-white/10 text-gray-400 group-hover:bg-white/20 group-hover:text-gray-300'
-              }`}>
+              }">
                 {category.count}
               </span>
               
@@ -560,11 +501,11 @@ const Skills = () => {
             </button>
           ))}
         </div>        {/* Enhanced Skills Grid */}
-        <div ref={skillsGridRef} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-20">
+        <div ref={skillsGridRef} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-20 font-mono font-roboto">
           {filteredSkills.map((skill, index) => (
             <div
               key={skill.name}
-              className={`group relative bg-white/5 backdrop-blur-sm rounded-2xl p-6 border border-white/10 hover:border-white/30 transition-all duration-300 hover:bg-white/10 cursor-pointer overflow-hidden ${
+              className={`group relative bg-white/5 backdrop-blur-sm rounded-2xl p-6 border border-white/10 hover:border-white/30 transition-all duration-300 hover:bg-white/10 cursor-pointer overflow-hidden font-mono font-roboto ${
                 animateCards ? 'animate-fade-in-up' : 'opacity-0'
               } ${hoveredSkill === skill.name ? 'scale-[1.02] shadow-xl shadow-white/10' : ''}`}
               style={{ animationDelay: `${index * 100}ms` }}
@@ -573,43 +514,43 @@ const Skills = () => {
               onClick={() => handleSkillClick(skill)}
             >
               {/* Skill Header */}
-              <div className="flex items-center justify-between mb-4">
-                <div className="flex items-center gap-3">
-                  <div className="text-3xl group-hover:scale-110 transition-transform duration-300">
+              <div className="flex items-center justify-between mb-4 font-mono font-roboto">
+                <div className="flex items-center gap-3 font-mono font-roboto">
+                  <div className="text-3xl group-hover:scale-110 transition-transform duration-300 font-mono font-roboto">
                     {skill.icon}
                   </div>
                   <div>
-                    <div className="flex items-center gap-2 mb-1">
-                      <h3 className="text-xl font-bold text-white group-hover:text-gray-200 transition-colors">
+                    <div className="flex items-center gap-2 mb-1 font-mono font-roboto">
+                      <h3 className="text-xl font-bold text-white group-hover:text-gray-200 transition-colors font-mono font-roboto">
                         {skill.name}
                       </h3>
                       {skill.trending && (
-                        <div className="w-2 h-2 bg-white rounded-full animate-pulse" title="Trending" />
+                        <div className="w-2 h-2 bg-white rounded-full animate-pulse font-mono font-roboto" title="Trending" />
                       )}
                     </div>
-                    <div className="flex items-center gap-2">
-                      <span className={`text-sm font-medium bg-gradient-to-r ${getSkillLevelColor(skill.level)} bg-clip-text text-transparent`}>
+                    <div className="flex items-center gap-2 font-mono font-roboto">
+                      <span className="text-sm font-medium bg-gradient-to-r font-mono font-roboto ${getSkillLevelColor(skill.level)} bg-clip-text text-transparent">
                         {getSkillLevelText(skill.level)}
                       </span>
-                      <div className="text-gray-400">
+                      <div className="text-gray-400 font-mono font-roboto">
                         {getSkillLevelIcon(skill.level)}
                       </div>
                     </div>
                   </div>
                 </div>                
-                <div className="text-right">
-                  <div className="text-3xl font-bold text-white group-hover:text-gray-200 transition-colors">
+                <div className="text-right font-mono font-roboto">
+                  <div className="text-3xl font-bold text-white group-hover:text-gray-200 transition-colors font-mono font-roboto">
                     {skill.level}%
                   </div>
-                  <div className="text-xs text-gray-400">{skill.experience}</div>
+                  <div className="text-xs text-gray-400 font-mono font-roboto">{skill.experience}</div>
                 </div>
               </div>
 
               {/* Enhanced Progress Bar */}
-              <div className="mb-4 relative">
-                <div className="w-full bg-white/10 rounded-full h-3 overflow-hidden relative">
+              <div className="mb-4 relative font-mono font-roboto">
+                <div className="w-full bg-white/10 rounded-full h-3 overflow-hidden relative font-mono font-roboto">
                   <div 
-                    className={`h-full bg-gradient-to-r ${getSkillLevelColor(skill.level)} transition-all duration-1000 ease-out relative overflow-hidden`}
+                    className={`h-full bg-gradient-to-r font-mono font-roboto ${getSkillLevelColor(skill.level)} transition-all duration-1000 ease-out relative overflow-hidden`}
                     style={{ 
                       width: skillProgress[skill.name] ? `${skillProgress[skill.name]}%` : '0%',
                       transitionDelay: `${index * 100 + 500}ms`
@@ -633,25 +574,25 @@ const Skills = () => {
               </div>
 
               {/* Enhanced Description */}
-              <p className="text-gray-400 text-sm mb-4 leading-relaxed group-hover:text-gray-300 transition-colors">
+              <p className="text-gray-400 text-sm mb-4 leading-relaxed group-hover:text-gray-300 transition-colors font-mono font-roboto">
                 {skill.description}
               </p>
 
               {/* Enhanced Stats */}
               <div className="grid grid-cols-2 gap-4 pt-4 border-t border-white/10">
                 <div className="text-center">
-                  <div className="text-lg font-bold text-white group-hover:text-gray-200 transition-colors">
+                  <div className="text-lg font-bold text-white group-hover:text-gray-200 transition-colors font-mono font-roboto">
                     {skill.projects}
                   </div>
-                  <div className="text-xs text-gray-400 group-hover:text-gray-300 transition-colors">
+                  <div className="text-xs text-gray-400 group-hover:text-gray-300 transition-colors font-mono font-roboto">
                     Projects
                   </div>
                 </div>
                 <div className="text-center">
-                  <div className="text-lg font-bold text-white group-hover:text-gray-200 transition-colors">
+                  <div className="text-lg font-bold text-white group-hover:text-gray-200 transition-colors font-mono font-roboto">
                     {skill.experience.split('+')[0]}+
                   </div>
-                  <div className="text-xs text-gray-400 group-hover:text-gray-300 transition-colors">
+                  <div className="text-xs text-gray-400 group-hover:text-gray-300 transition-colors font-mono font-roboto">
                     Years
                   </div>
                 </div>

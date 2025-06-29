@@ -9,7 +9,6 @@ const About = () => {
   const [scrollProgress, setScrollProgress] = useState(0);
   const [visibleStats, setVisibleStats] = useState([]);
   const [typedText, setTypedText] = useState('');
-  const [particles, setParticles] = useState([]);
   const [hoveredCard, setHoveredCard] = useState(null);
   const [profileRotation, setProfileRotation] = useState({ x: 0, y: 0 });
   const [skillProgress, setSkillProgress] = useState({});
@@ -42,33 +41,6 @@ const About = () => {
     }, isDeleting ? 50 : 100);
 
     return () => clearInterval(typeTimer);
-  }, []);
-
-  // Particle system
-  useEffect(() => {
-    const generateParticles = () => {
-      const newParticles = Array.from({ length: 50 }, (_, i) => ({
-        id: i,
-        x: Math.random() * 100,
-        y: Math.random() * 100,
-        size: Math.random() * 3 + 1,
-        speedX: (Math.random() - 0.5) * 0.5,
-        speedY: (Math.random() - 0.5) * 0.5,
-        opacity: Math.random() * 0.5 + 0.1,
-      }));
-      setParticles(newParticles);
-    };
-
-    generateParticles();
-    const interval = setInterval(() => {
-      setParticles(prev => prev.map(particle => ({
-        ...particle,
-        x: (particle.x + particle.speedX + 100) % 100,
-        y: (particle.y + particle.speedY + 100) % 100,
-      })));
-    }, 100);
-
-    return () => clearInterval(interval);
   }, []);
 
   // Advanced intersection observer
@@ -199,20 +171,6 @@ const About = () => {
       description: "Leading development of complex web applications and mentoring junior developers.",
       achievements: ["Led 5+ major projects", "Mentored 3 junior developers", "Improved code quality by 40%"],
       tech: ["React", "Node.js", "TypeScript", "AWS"]
-    },
-    {
-      year: "2023 - 2024",
-      title: "Full-Stack Developer",
-      description: "Developed scalable web applications using React, Node.js, and cloud technologies.",
-      achievements: ["Built 20+ applications", "Reduced load times by 60%", "Implemented CI/CD pipelines"],
-      tech: ["React", "Express", "MongoDB", "Docker"]
-    },
-    {
-      year: "2022 - 2023",
-      title: "Frontend Developer",
-      description: "Started my professional journey focusing on React and modern frontend technologies.",
-      achievements: ["Mastered React ecosystem", "Created 15+ UI components", "Learned backend technologies"],
-      tech: ["React", "JavaScript", "CSS3", "Git"]
     }
   ];
 
@@ -371,61 +329,22 @@ const About = () => {
   };
 
   return (
-    <section ref={sectionRef} id="about" className="py-24 bg-black relative overflow-hidden">
-      {/* Enhanced Background Elements */}
-      <div className="absolute inset-0">
-        {/* Animated particles */}
-        {particles.map(particle => (
-          <div
-            key={particle.id}
-            className="absolute w-1 h-1 bg-white rounded-full"
-            style={{
-              left: `${particle.x}%`,
-              top: `${particle.y}%`,
-              opacity: particle.opacity,
-              transform: `scale(${particle.size})`,
-            }}
-          />
-        ))}
-        
-        {/* Interactive background orbs */}
-        <div 
-          className="absolute w-96 h-96 bg-white/5 rounded-full blur-3xl transition-all duration-1000"
-          style={{
-            top: '10%',
-            right: `${25 + mousePosition.x * 0.1}%`,
-            transform: `scale(${1 + scrollProgress * 0.2})`,
-          }}
-        />
-        <div 
-          className="absolute w-96 h-96 bg-gray-400/10 rounded-full blur-3xl transition-all duration-1000"
-          style={{
-            bottom: '10%',
-            left: `${25 + mousePosition.y * 0.1}%`,
-            transform: `scale(${1 + scrollProgress * 0.3})`,
-          }}
-        />
-        
-        {/* Grid overlay */}
-        <div className="absolute inset-0 opacity-[0.02]" style={{
-          backgroundImage: `radial-gradient(circle at 1px 1px, white 1px, transparent 0)`,
-          backgroundSize: '50px 50px',
-        }} />
-      </div>
-
-      <div className="max-w-7xl mx-auto px-6 relative z-10">
+    <section id="about" className="py-24 bg-black relative overflow-hidden font-mono font-roboto">
+      {/* Background: plain black, no dots */}
+      {/* Removed all animated particles, orbs, and grid overlays */}
+      <div className="max-w-7xl mx-auto px-6 relative z-10 font-mono font-roboto">
         {/* Enhanced Header */}
-        <div className="text-center mb-20">
+        <div className="text-center mb-20 font-mono font-roboto">
           <div className="inline-block mb-4">
             <span className="text-sm font-medium text-gray-300 bg-white/10 px-6 py-3 rounded-full border border-white/20 backdrop-blur-sm">
               ✨ Get to know me
             </span>
           </div>
-          <h2 className="text-5xl md:text-7xl font-bold mb-6 bg-gradient-to-r from-white via-gray-200 to-gray-400 bg-clip-text text-transparent">
+          <h2 className="text-5xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-white via-gray-300 to-gray-400 bg-clip-text text-transparent font-mono font-roboto">
             About Me
           </h2>
           <div className="max-w-4xl mx-auto">
-            <p className="text-gray-400 text-xl leading-relaxed mb-4">
+            <p className="text-gray-400 text-xl leading-relaxed max-w-3xl mx-auto font-mono font-roboto">
               Passionate developer creating meaningful digital experiences through code and design
             </p>
             <div className="w-24 h-1 bg-gradient-to-r from-transparent via-white to-transparent mx-auto rounded-full" />
@@ -433,7 +352,7 @@ const About = () => {
         </div>
 
         {/* Main Content Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-12 mb-20">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-12 mb-[-210px]">
           {/* Enhanced Left Column - Profile Info */}
           <div className="lg:col-span-1">            <div 
               ref={profileRef}
