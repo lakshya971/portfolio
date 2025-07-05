@@ -78,7 +78,7 @@ const Contact = () => {
       icon: Linkedin,
       title: 'LinkedIn',
       info: 'linkedin.com/in/Lakshya Asthana',
-      link: 'https://www.linkedin.com/in/lakshya-asthana-132941292/',
+      link: 'https://www.linkedin.com/in/lakshya-asthana/',
       description: 'Let\'s connect professionally'
     },
     {

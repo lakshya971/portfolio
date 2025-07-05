@@ -181,7 +181,7 @@ const Hero = () => {
               <Github size={24} className="text-gray-300 group-hover:text-white transition-colors" />
             </a>
             <a
-              href="https://www.linkedin.com/in/lakshya-asthana-132941292/"
+              href="https://www.linkedin.com/in/lakshya-asthana/"
               target="_blank"
               rel="noopener noreferrer"
               className="group p-3 bg-white/5 backdrop-blur-sm rounded-full border border-white/20 hover:border-white/40 hover:bg-white/10 transition-all duration-300 hover:scale-110 font-mono font-roboto"
